@@ -1,21 +1,12 @@
+S = set("aeiouAEIOU")
+
 class Solution(object):
     def reverseVowels(self, s):
-        word = list(s)
-        a = []  # list to store vowels
-        vowels = "aeiouAEIOU"
-
-        # Step 1: collect vowels
-        for i in word:
-            for j in vowels:
-                if i == j:
-                    a.append(i)
-                    break
-
-        # Step 2: replace vowels in reverse order
-        idx = len(a) - 1
-        for i in range(len(word)):
-            if word[i] in vowels:
-                word[i] = a[idx]
-                idx -= 1
-
-        return "".join(word)
+        i, j, lst = 0, len(s) - 1, list(s)
+        while i < j:
+            while i < j and lst[i] not in S: i += 1
+            while i < j and lst[j] not in S: j -= 1
+            lst[i], lst[j] = lst[j], lst[i]
+            i += 1
+            j -= 1
+        return "".join(lst)
