@@ -5,12 +5,9 @@ class Solution(object):
         a = 0
         for i in range(l):
             if i%2==0 and x[i]!='1':
-                a = a+1
                 return False
             if i%2==1 and x[i]!='0':
-                a = a+1
                 return False
-        if a == 0:
-            return True
+        return True
             
         
